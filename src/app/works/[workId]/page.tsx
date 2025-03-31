@@ -1,4 +1,4 @@
-import fs from 'fs/promises'; // Use async version
+import fs from 'fs/promises';
 import path from 'path';
 
 type WorkPageProps = {
@@ -7,6 +7,7 @@ type WorkPageProps = {
     };
 };
 
+// Modify the component to expect the correct type for params
 export default async function WorkPage({ params }: WorkPageProps) {
     const { workId } = params;
     const imageDir = path.join(process.cwd(), 'public/images', workId);
@@ -19,15 +20,6 @@ export default async function WorkPage({ params }: WorkPageProps) {
     }
 
     return (
-        // <div>
-        //     <h2>Gallery for {workId}</h2>
-        //     <div className="grid grid-cols-3 gap-4">
-        //         {imageFiles.map((file, index) => (
-        //             <img key={index} src={`/images/${workId}/${file}`} alt={file} className="w-full h-auto" />
-        //         ))}
-        //     </div>
-        // </div>
-
         <div className="p-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center">
                 Gallery
@@ -45,8 +37,5 @@ export default async function WorkPage({ params }: WorkPageProps) {
                 ))}
             </div>
         </div>
-
-
     );
 }
-
