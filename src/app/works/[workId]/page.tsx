@@ -9,7 +9,7 @@ type WorkPageProps = {
 
 // Modify the component to expect the correct type for params
 export default async function WorkPage({ params }: WorkPageProps) {
-    const { workId } = params;
+    const { workId } = await params;
     const imageDir = path.join(process.cwd(), 'public/images', workId);
 
     let imageFiles: string[] = [];
