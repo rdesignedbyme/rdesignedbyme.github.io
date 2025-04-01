@@ -9,38 +9,55 @@ export default function Home() {
           Designed By Me
         </h1>
 
-
-        <p className="mb-6 font-sans">Check out my work and projects below!</p>
+        <p className="mb-6 font-sans">Check out our work and projects below!</p>
         <Link href="#work" className="px-6 py-3 bg-yellow-500 text-black rounded-full text-xl font-semibold transition-transform hover:scale-105">
           See Our Work
         </Link>
       </section>
-
 
       {/* Work Section */}
       <section id="work" className="py-16 min-h-screen flex flex-col justify-center items-center px-4">
         <h2 className="text-3xl text-center font-bold mb-20">Our Works</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 max-w-7xl mx-auto">
           {/* Project Tiles */}
-          {['Logo', 'Banner(Mobile)', 'Banner(Desktop)'].map((workId) => (
-            <Link href={`/works/${workId}`} key={workId}>
-              <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
-
-
-                <img
-                  src={`/images/${workId}/thumbnail.png`}
-                  alt={workId}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-semibold">{workId}</h3>
-                </div>
-
+          <Link href="/logo">
+            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
+              <img
+                src="/images/Logo/thumbnail.png"
+                alt="Logo"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold">Logo</h3>
               </div>
+            </div>
+          </Link>
 
+          <Link href="/mobile">
+            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
+              <img
+                src="/images/Mobile/thumbnail.png"
+                alt="Mobile"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold">Mobile Banner</h3>
+              </div>
+            </div>
+          </Link>
 
-            </Link>
-          ))}
+          <Link href="/desktop">
+            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
+              <img
+                src="/images/Desktop/thumbnail.png"
+                alt="Desktop"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold">Desktop Banner</h3>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
