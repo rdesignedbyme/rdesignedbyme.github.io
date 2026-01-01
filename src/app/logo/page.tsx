@@ -16,21 +16,29 @@ export default async function WorkPage() {
     }
 
     return (
-        <div className="p-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg shadow-lg">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center">
-                Gallery
+        <div className="min-h-screen p-8 pt-24">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-12 text-center tracking-tight">
+                Logo Gallery
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                 {imageFiles.map((file, index) => (
-                    <div key={index} className="relative overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                        <img
-                            src={`/images/Logo/${file}`}
-                            alt={file}
-                            className="w-full h-auto object-cover rounded-lg transition-transform duration-300"
-                        />
+                    <div key={index} className="glass-card p-3 transform transition-all duration-500 hover:scale-105 hover:rotate-1">
+                        <div className="relative overflow-hidden rounded-xl shadow-sm">
+                            <img
+                                src={`/images/Logo/${file}`}
+                                alt={file}
+                                className="w-full h-auto object-cover transition-transform duration-700 hover:scale-110"
+                            />
+                        </div>
                     </div>
                 ))}
+            </div>
+            
+             <div className="mt-12 text-center">
+                <a href="/" className="inline-block px-8 py-3 glass-btn rounded-full text-gray-800 font-semibold">
+                    ← Back Home
+                </a>
             </div>
         </div>
     );

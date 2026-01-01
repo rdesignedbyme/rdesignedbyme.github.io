@@ -2,89 +2,110 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-sans text-gray-800">
       {/* Landing Section */}
-      <section className="relative p-5 text-white py-32 text-center min-h-screen flex flex-col justify-center items-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-4 font-sans transform transition-all duration-500 ease-in-out hover:scale-110 hover:translate-y-2">
-          Designed By Me
-        </h1>
+      {/* Landing Section */}
+      <section className="relative w-full min-h-screen flex flex-col justify-center items-center p-6 overflow-hidden">
+        
+        {/* Floating Abstract Glass Shapes (Decorative) */}
+        <div className="absolute top-1/4 left-10 w-24 h-24 bg-white/30 backdrop-blur-xl rounded-full mix-blend-overlay animate-bounce-slow hidden lg:block"></div>
+        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-purple-200/20 backdrop-blur-xl rounded-full mix-blend-overlay animate-pulse-slow hidden lg:block"></div>
 
-        <p className="mb-6 font-sans">Check out our work and projects below!</p>
-        <Link href="#work" className="px-6 py-3 bg-yellow-500 text-black rounded-full text-xl font-semibold transition-transform hover:scale-105">
-          See Our Work
-        </Link>
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+            {/* Main Title - Clean & Open */}
+            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter text-gray-900 mb-8 drop-shadow-sm select-none">
+              Designed <br className="sm:hidden" /> By Me
+            </h1>
+
+            {/* Glass Pill Subtitle */}
+            <div className="inline-block mb-12">
+              <div className="glass-panel px-8 py-3 rounded-full border-white/50 bg-white/20 shadow-sm backdrop-blur-md">
+                <p className="text-lg sm:text-xl font-medium text-gray-700">
+                  Liquid designs that breathe.
+                </p>
+              </div>
+            </div>
+            
+            {/* Minimal Floating Buttons */}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <Link href="#work" className="px-10 py-4 bg-gray-900 text-white rounded-full text-lg font-bold hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                  See Our Work
+              </Link>
+              
+              <Link href="#follow-us" className="px-10 py-4 glass-btn rounded-full text-lg font-bold text-gray-800 hover:bg-white transition-all duration-300">
+                 Get in Touch
+              </Link>
+            </div>
+        </div>
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-16 min-h-screen flex flex-col justify-center items-center px-4">
-        <h2 className="text-3xl text-center font-bold mb-20">Our Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20 max-w-7xl mx-auto">
+      <section id="work" className="py-24 min-h-screen flex flex-col justify-center items-center px-6">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-20 text-center text-gray-900 tracking-tight">Selected Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto w-full">
           {/* Project Tiles */}
-          <Link href="/logo">
-            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
-              <img
-                src="/images/Logo/thumbnail.png"
-                alt="Logo"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">Logo</h3>
+          {[
+            { href: '/logo', img: '/images/Logo/thumbnail.png', title: 'Identity & Logo' },
+            { href: '/mobile', img: '/images/Mobile/thumbnail.png', title: 'Mobile Experience' },
+            { href: '/desktop', img: '/images/Desktop/thumbnail.png', title: 'Desktop Design' },
+          ].map((item) => (
+            <Link href={item.href} key={item.title} className="group block h-full">
+              <div className="glass-card h-full overflow-hidden flex flex-col">
+                <div className="relative overflow-hidden h-64 w-full">
+                   <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-white/10 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
+                <div className="p-8 flex-grow flex items-center justify-center">
+                  <h3 className="text-2xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+                    {item.title}
+                  </h3>
+                </div>
               </div>
-            </div>
-          </Link>
-
-          <Link href="/mobile">
-            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
-              <img
-                src="/images/Mobile/thumbnail.png"
-                alt="Mobile"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">Mobile Banner</h3>
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/desktop">
-            <div className="border-10 border-white shadow-lg overflow-hidden backdrop-blur-lg bg-white/20 hover:bg-white/30 transition-all transform hover:scale-105">
-              <img
-                src="/images/Desktop/thumbnail.png"
-                alt="Desktop"
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">Desktop Banner</h3>
-              </div>
-            </div>
-          </Link>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* Follow Us Section */}
-      <section id="follow-us" className="flex flex-col min-h-screen justify-center items-center px-4 text-center py-8 sm:py-16 md:py-24">
-        <h2 className="text-3xl text-center text-white font-bold mb-12">CONTACT US</h2>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          <a href="https://www.instagram.com/r.designedbyme/" target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg shadow-lg overflow-hidden block">
-            <img src="https://cdn.logojoy.com/wp-content/uploads/20230511124058/instagram-new-gradient-logo-animation.gif" alt="Instagram" className="w-full h-48 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-800">Instagram</h3>
-              <p className="mt-4 text-gray-600">Follow us on Instagram for the work.</p>
-            </div>
-          </a>
-          <a href="https://www.reddit.com/r/DesignedByMe" target="_blank" rel="noopener noreferrer" className="bg-white rounded-lg shadow-lg overflow-hidden block">
-            <img src="https://assets.designhill.com/design-blog/wp-content/uploads/2023/12/1-1.jpg" alt="Reddit" className="w-full h-48 object-cover" />
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-gray-800">Reddit</h3>
-              <p className="mt-4 text-gray-600">Join our Reddit community to request Logo/Banner/Video.</p>
-            </div>
-          </a>
+      <section id="follow-us" className="flex flex-col min-h-screen justify-center items-center px-6 py-24 text-center">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-gray-900">Connect With Us</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto w-full">
+          {[
+            { 
+              href: "https://www.instagram.com/r.designedbyme/", 
+              img: "https://cdn.logojoy.com/wp-content/uploads/20230511124058/instagram-new-gradient-logo-animation.gif", 
+              title: "Instagram", 
+              desc: "Follow our latest visual experiments."
+            },
+            { 
+              href: "https://www.reddit.com/r/DesignedByMe", 
+              img: "https://assets.designhill.com/design-blog/wp-content/uploads/2023/12/1-1.jpg", 
+              title: "Reddit", 
+              desc: "Join the community & request designs."
+            }
+          ].map((social) => (
+            <a href={social.href} target="_blank" rel="noopener noreferrer" key={social.title} className="group block">
+              <div className="glass-card overflow-hidden text-left h-full hover:shadow-2xl transition-all duration-500">
+                <div className="h-56 overflow-hidden">
+                   <img src={social.img} alt={social.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-3xl font-bold mb-3 text-gray-900">{social.title}</h3>
+                  <p className="text-gray-600 text-lg">{social.desc}</p>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="text-center py-6 bg-black text-white">
-        <p>&copy; {new Date().getFullYear()} Designed By Me.</p>
+      <footer className="py-8 text-center glass-panel mt-12 mx-4 mb-4">
+        <p className="text-gray-600 font-medium">&copy; {new Date().getFullYear()} Designed By Me. All rights reserved.</p>
       </footer>
     </div>
   );

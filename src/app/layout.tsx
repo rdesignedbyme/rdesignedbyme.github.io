@@ -25,9 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen relative`}
       >
-        {children}
+        <div className="fluid-bg">
+          <div className="blob blob-1"></div>
+          <div className="blob blob-2"></div>
+          <div className="blob blob-3"></div>
+        </div>
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
